@@ -1,9 +1,9 @@
 //Declaring the variables.
 var helicopterIMG, helicopterSprite, packageSprite,packageIMG;
-var packageBody,ground, zombieLeft, zombieRight;
+var packageBody,ground;
 var leftBoxBody,rightBoxBody,bottomBoxBody;
 var leftBoxSprite,rightBoxSprite,bottomBoxSprite;
-var zombieLeftImg,zombieRightImg, headText, headText2;
+var headText, headText2;
 var zombie_sound, success_sound, Heading, Heading2;
 
 //Declaring the constants.
@@ -17,8 +17,6 @@ function preload() {
 	//Loading images to four variables.
 	helicopterIMG=loadImage("helicopter.png");
 	packageIMG=loadImage("package.png");
-	zombieLeftImg = loadImage("zombie left.jpg");
-	zombieRightImg = loadImage("zombie right.jpg");
 	Heading = loadImage("Text.png");
 	Heading2 = loadImage("Text2.png");
 }
@@ -43,20 +41,6 @@ function setup() {
 	//Loading sounds to two variables.
 	zombie_sound = loadSound("zombie_sound.mp3");
 	success_sound = loadSound("win.mp3");
-
-	//Creating a sprite named zombieLeft.
-	zombieLeft = createSprite(-50,610,10,10);
-	//Adding image to it.
-	zombieLeft.addImage(zombieLeftImg);
-	//Adjusting its size.
-	zombieLeft.scale = 0.2;
-
-	//Creating a sprite named zombieRight.
-	zombieRight = createSprite(850,610,10,10);
-	//Adding image to it.
-	zombieRight.addImage(zombieRightImg);
-	//Adjusting its size.
-	zombieRight.scale = 0.2;
 
 	//Creating a sprite named packageSprite.
 	packageSprite=createSprite(50, 50, 10,10);
@@ -139,13 +123,11 @@ function draw() {
 
 	//Displaying 'Well Done!' text under certain conditions.
 	if(packageSprite.isTouching(bottomBoxSprite) && packageSprite.x > 375 && packageSprite.x < 425) {
-		if(zombieLeft.velocityX === 0 || zombieRight.velocityX === 0) {
 			fill("red");
 			textFont("segoe script");
 			textStyle(BOLD);
 			textSize(30);
 			text("Well Done!", 290,500);
-		}
 	}
 
 	//Colliding packageSprite with bottomBoxSprite.
@@ -153,31 +135,6 @@ function draw() {
 	packageSprite.collide(leftBoxSprite);
 	packageSprite.collide(rightBoxSprite);
 
-	//Changing zombieLeft and zombieRight's velocity when packageSprite touches groundSprite.
-	if(packageSprite.isTouching(groundSprite)) {
-		if(packageSprite.x < 400 && packageSprite.y < 800) {
-			zombieLeft.velocityX = 3;
-		}
-		else if(packageSprite.x > 400 && packageSprite.y < 800) {
-			zombieRight.velocityX = -3;
-		}
-	} 
-
-	//Assigning functions when packageSprite touches zombieLeft, zombieRight or packageSprite's y position is greater than 800.
-	if(packageSprite.isTouching(zombieLeft) || packageSprite.isTouching(zombieRight) || packageSprite.y > 800) {
-		//Setting zombieLeft and zombieRight's velocityX to 0.
-		zombieLeft.velocityX = 0;
-		zombieRight.velocityX = 0;
-		//Making packageSprite invisible.
-		packageSprite.visible = false;
-
-		//Displaying text.
-		fill("red");
-		textFont("segoe script");
-		textStyle(BOLD);
-		textSize(30);
-		text("Refresh the page to retry.", 210,500);
-	}
 
 	//Setting a condition when Right Arrow key is pressed.
 	//If the condition is true, zombie_sound is played; else success_sound is played.
