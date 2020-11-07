@@ -67,7 +67,7 @@ function setup() {
 	world = engine.world;
 
 	//Creating a circle body named packageBody.
-	packageBody = Bodies.circle(50 , 70 , 5 , {restitution:0.8, isStatic:true});
+	packageBody = Bodies.circle(50 , 70 , 5 , {restitution:0, isStatic:true});
 	//Adding it to Matter.World.
 	World.add(world, packageBody);
 
@@ -134,8 +134,6 @@ function draw() {
 	packageSprite.collide(bottomBoxSprite);
 	packageSprite.collide(leftBoxSprite);
 	packageSprite.collide(rightBoxSprite);
-	packageSprite.collide(ground);
-
 
 	//Setting a condition when Right Arrow key is pressed.
 	//If the condition is true, zombie_sound is played; else success_sound is played.
