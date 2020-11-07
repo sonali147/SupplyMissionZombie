@@ -67,7 +67,7 @@ function setup() {
 	world = engine.world;
 
 	//Creating a circle body named packageBody.
-	packageBody = Bodies.circle(50 , 70 , 5 , {restitution:0, isStatic:true});
+	packageBody = Bodies.circle(50 , 70 , 5 , {restitution:0.8, isStatic:true});
 	//Adding it to Matter.World.
 	World.add(world, packageBody);
 
