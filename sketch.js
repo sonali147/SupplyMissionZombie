@@ -134,6 +134,7 @@ function draw() {
 	packageSprite.collide(bottomBoxSprite);
 	packageSprite.collide(leftBoxSprite);
 	packageSprite.collide(rightBoxSprite);
+	packageSprite.collide(ground);
 
 
 	//Setting a condition when Right Arrow key is pressed.
