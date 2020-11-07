@@ -198,7 +198,7 @@ function draw() {
 	fill("white");
 	textFont("segoe script");
 	textSize(20);
-	text("Drop the package in the red box.",20,160);
+	text("Drop the package in the red box.",100,160);
 	text("It contains supplies for the people stuck in the zombie city",20,190);
 	text("Press down arrow key for left and Ctrl key for right. Press Right arrow",20,220);
 	text("key to drop the package.",20,250)
