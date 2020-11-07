@@ -198,14 +198,10 @@ function draw() {
 	fill("white");
 	textFont("segoe script");
 	textSize(20);
-	text("You are a sergeant on an Indian Airforce mission. Your task is to drop",20,160);
-	text("a package in a designated red drop zone. The package contains essential",20,190);
-	text("items for daily-needs for the people stuck in a city infested with",20,220);
-	text("zombies. It is very important to deliver the package at the exact",20,250)
-	text("location for the success of the mission. You can control the helicopter",20,280);
-	text("by down arrow key (for left) and Ctrl key (for right). Press Right arrow",20,310);
-	text("key to drop the package. If you drop it outside the drop zone, the",20,340);
-	text("zombies would come and destroy it. Good luck !!",20,370);
+	text("Drop the package in the red box.",20,160);
+	text("It contains supplies for the people stuck in the zombie city",20,190);
+	text("Press down arrow key for left and Ctrl key for right. Press Right arrow",20,220);
+	text("key to drop the package.",20,250)
 
 	//Displaying all sprites on the screen.
   	drawSprites();
