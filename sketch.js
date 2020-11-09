@@ -21,6 +21,10 @@ function preload() {
 	zombieRightImg = loadImage("zombie right.jpg");
 	Heading = loadImage("Text.png");
 	Heading2 = loadImage("Text2.png");
+	
+	//Loading sounds to two variables.
+	zombie_sound = loadSound("zombie_sound.mp3");
+	success_sound = loadSound("win.mp3");
 }
 
 //setup function.
@@ -39,10 +43,6 @@ function setup() {
 	headText2 = createSprite(410,100,10,10);
 	headText2.addImage(Heading2);
 	headText2.scale = 0.2;
-
-	//Loading sounds to two variables.
-	zombie_sound = loadSound("zombie_sound.mp3");
-	success_sound = loadSound("win.mp3");
 
 	//Creating a sprite named zombieLeft.
 	zombieLeft = createSprite(-50,610,10,10);
