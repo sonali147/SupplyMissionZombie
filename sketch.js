@@ -152,7 +152,7 @@ function draw() {
 	packageSprite.collide(bottomBoxSprite);
 	packageSprite.collide(leftBoxSprite);
 	packageSprite.collide(rightBoxSprite);
-	packageSprite.collide(ground);
+	packageSprite.collide(groundSprite);
 
 	//Changing zombieLeft and zombieRight's velocity when packageSprite touches groundSprite.
 	if(packageSprite.isTouching(groundSprite)) {
