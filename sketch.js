@@ -103,19 +103,20 @@ function setup() {
 
 	//Creating three rectangle bodies for the red box.
 	//Adding them to Matter.world.
- 	leftBoxBody = Bodies.rectangle(370, 635, 10,70 , {isStatic:true} );
+ 	leftBoxBody = Bodies.rectangle(370, 635, 10,50 , {isStatic:true} );
  	World.add(world, leftBoxBody);
  	bottomBoxBody = Bodies.rectangle(400, 655, 50,10 , {isStatic:true} );
  	World.add(world, bottomBoxBody);
- 	rightBoxBody = Bodies.rectangle(430, 635, 10,70 , {isStatic:true} );
+ 	rightBoxBody = Bodies.rectangle(430, 635, 10,50 , {isStatic:true} );
 	World.add(world, rightBoxBody);
 
-	//Running the previously created engine.
-	Engine.run(engine);
 }
 
 //draw function.
 function draw() {
+	
+		//Running the previously created engine.
+		Engine.update(engine);
 	//Setting rectMode as CENTER.
 	rectMode(CENTER);
 	//Setting background color as black.
@@ -234,5 +235,3 @@ function keyPressed() {
 	  
 	  
 }
-
-
