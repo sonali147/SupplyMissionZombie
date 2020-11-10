@@ -21,6 +21,11 @@ function preload() {
 	zombieRightImg = loadImage("zombie right.jpg");
 	Heading = loadImage("Text.png");
 	Heading2 = loadImage("Text2.png");
+
+	//Loading sounds to two variables.
+	zombie_sound = loadSound("zombie_sound.mp3");
+	success_sound = loadSound("win.mp3");
+	
 }
 
 //setup function.
@@ -39,10 +44,6 @@ function setup() {
 	headText2 = createSprite(410,100,10,10);
 	headText2.addImage(Heading2);
 	headText2.scale = 0.2;
-
-	//Loading sounds to two variables.
-	zombie_sound = loadSound("zombie_sound.mp3");
-	success_sound = loadSound("win.mp3");
 
 	//Creating a sprite named zombieLeft.
 	zombieLeft = createSprite(-50,610,10,10);
@@ -152,6 +153,8 @@ function draw() {
 	packageSprite.collide(bottomBoxSprite);
 	packageSprite.collide(leftBoxSprite);
 	packageSprite.collide(rightBoxSprite);
+	packageSprite.collide(groundSprite);
+
 
 	//Changing zombieLeft and zombieRight's velocity when packageSprite touches groundSprite.
 	if(packageSprite.isTouching(groundSprite)) {
@@ -168,8 +171,6 @@ function draw() {
 		//Setting zombieLeft and zombieRight's velocityX to 0.
 		zombieLeft.velocityX = 0;
 		zombieRight.velocityX = 0;
-		//Making packageSprite invisible.
-		packageSprite.visible = false;
 
 		//Displaying text.
 		fill("red");
@@ -177,6 +178,7 @@ function draw() {
 		textStyle(BOLD);
 		textSize(30);
 		text("Refresh the page to retry.", 210,500);
+
 	}
 
 	//Setting a condition when Right Arrow key is pressed.
@@ -193,15 +195,15 @@ function draw() {
 			}
 		}
 	}
-	
-	//Displaying info text.
-	fill("white");
-	textFont("segoe script");
-	textSize(20);
-	text("Drop the package in the red box.",200,160);
-	text("It contains supplies for the people stuck in the zombie city",20,190);
-	text("Press left arrow key for left and Ctrl key for right. Press Right arrow",20,220);
-	text("key to drop the package.",20,250)
+
+		//Displaying info text.
+		fill("white");
+		textFont("segoe script");
+		textSize(20);
+		text("Drop the package in the red box.",200,160);
+		text("It contains supplies for the people stuck in the zombie city",20,190);
+		text("Press left arrow key for left and Ctrl key for right. Press Right arrow",20,220);
+		text("key to drop the package.",20,250)
 
 	//Displaying all sprites on the screen.
   	drawSprites();
@@ -210,7 +212,7 @@ function draw() {
 //keyPressed function.
 function keyPressed() {
 	//Moving helicopterSprite towards left when down arrow key is pressed and packageSprite's y position is less than 200.
-	if (keyCode === DOWN_ARROW && packageSprite.y < 200) {
+	if (keyCode === LEFT_ARROW && packageSprite.y < 200) {
 		helicopterSprite.x=helicopterSprite.x-30;    
 		if(packageSprite.y < 200) {
 			translation={x:-30,y:0}
@@ -230,5 +232,6 @@ function keyPressed() {
 	//Making the packageBody fall on ground when Right arrow key is pressed and packageSprite's y is less than 200.
  	else if (keyCode === RIGHT_ARROW && packageSprite.y < 200) {
     	Matter.Body.setStatic(packageBody, false);
-  	}
+	  }
+	  
 }
