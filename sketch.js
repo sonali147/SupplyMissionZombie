@@ -114,7 +114,7 @@ function setup() {
 
 //draw function.
 function draw() {
-	
+
 		//Running the previously created engine.
 		Engine.update(engine);
 	//Setting rectMode as CENTER.
@@ -154,7 +154,14 @@ function draw() {
 	//Changing zombieLeft and zombieRight's velocity when packageSprite touches groundSprite.
 	if(packageSprite.isTouching(groundSprite)) {
 
-    	Matter.Body.setStatic(packageBody,true);
+		Matter.Body.setStatic(packageBody,true);
+		
+				//Displaying text.
+				fill("red");
+				textFont("segoe script");
+				textStyle(BOLD);
+				textSize(30);
+				text("Refresh the page to retry.", 210,500);
 
 		if(packageSprite.x < 400 && packageSprite.y < 800) {
 			zombieLeft.velocityX = 3;
@@ -170,13 +177,6 @@ function draw() {
 		zombieLeft.velocityX = 0;
 		zombieRight.velocityX = 0;
 
-
-		//Displaying text.
-		fill("red");
-		textFont("segoe script");
-		textStyle(BOLD);
-		textSize(30);
-		text("Refresh the page to retry.", 210,500);
 	}
 
 	//Setting a condition when Right Arrow key is pressed.
