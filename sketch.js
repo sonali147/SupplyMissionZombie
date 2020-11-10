@@ -148,14 +148,13 @@ function draw() {
 		}
 	}
 
-	//Colliding packageSprite with bottomBoxSprite.
-	packageSprite.collide(bottomBoxSprite);
-	packageSprite.collide(leftBoxSprite);
-	packageSprite.collide(rightBoxSprite);
-	packageSprite.collide(groundSprite);
+
 
 	//Changing zombieLeft and zombieRight's velocity when packageSprite touches groundSprite.
 	if(packageSprite.isTouching(groundSprite)) {
+
+    	Matter.Body.setStatic(packageBody,true);
+
 		if(packageSprite.x < 400 && packageSprite.y < 800) {
 			zombieLeft.velocityX = 3;
 		}
@@ -165,12 +164,11 @@ function draw() {
 	} 
 
 	//Assigning functions when packageSprite touches zombieLeft, zombieRight or packageSprite's y position is greater than 800.
-	if(packageSprite.isTouching(zombieLeft) || packageSprite.isTouching(zombieRight) || packageSprite.y > 800) {
+	if( packageSprite.y > 840) {
 		//Setting zombieLeft and zombieRight's velocityX to 0.
 		zombieLeft.velocityX = 0;
 		zombieRight.velocityX = 0;
-		//Making packageSprite invisible.
-		packageSprite.visible = false;
+
 
 		//Displaying text.
 		fill("red");
@@ -201,7 +199,7 @@ function draw() {
 	textSize(20);
 	text("Drop the package in the red box.",200,160);
 	text("It contains supplies for the people stuck in the zombie city",20,190);
-	text("Press down arrow key for left and Ctrl key for right. Press Right arrow",20,220);
+	text("Press left arrow key for left and Ctrl key for right. Press Right arrow",20,220);
 	text("key to drop the package.",20,250)
 
 	//Displaying all sprites on the screen.
@@ -211,7 +209,7 @@ function draw() {
 //keyPressed function.
 function keyPressed() {
 	//Moving helicopterSprite towards left when down arrow key is pressed and packageSprite's y position is less than 200.
-	if (keyCode === DOWN_ARROW && packageSprite.y < 200) {
+	if (keyCode === LEFT_ARROW && packageSprite.y < 200) {
 		helicopterSprite.x=helicopterSprite.x-30;    
 		if(packageSprite.y < 200) {
 			translation={x:-30,y:0}
@@ -230,8 +228,11 @@ function keyPressed() {
 
 	//Making the packageBody fall on ground when Right arrow key is pressed and packageSprite's y is less than 200.
  	else if (keyCode === RIGHT_ARROW && packageSprite.y < 200) {
-    	Matter.Body.setStatic(packageBody, false);
-  	}
+    	Matter.Body.setStatic(packageBody,false);
+
+	  }
+	  
+	  
 }
 
 
